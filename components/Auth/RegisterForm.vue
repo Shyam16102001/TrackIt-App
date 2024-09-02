@@ -118,7 +118,6 @@ const { meta, handleSubmit, setErrors } = registerForm;
 
 const onSubmit = handleSubmit(async (credentials) => {
   isLoading.value = true;
-  console.log(credentials);
   try {
     await sanctumFetch("/register", {
       method: "POST",

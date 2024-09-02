@@ -18,15 +18,21 @@ export default defineNuxtConfig({
   },
 
   sanctum: {
-    baseUrl: "http://localhost:8000",
+    baseUrl: process.env.API_BASE_URL || "http://localhost:8000",
     redirect: {
       onAuthOnly: "/auth/login",
-      onGuestOnly: "/",
-      onLogin: "/",
+      onGuestOnly: "/dashboard",
+      onLogin: "/dashboard",
       onLogout: "/auth/login",
     },
     globalMiddleware: {
       enabled: true,
     },
   },
+
+  runtimeConfig: {
+    public: {
+      apiBaseUrl: process.env.API_BASE_URL || "http://localhost:8000",
+    }
+  }
 });

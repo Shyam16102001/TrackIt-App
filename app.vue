@@ -4,7 +4,6 @@
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-    <ColorChanger />
     <Toaster />
   </div>
 </template>

@@ -11,30 +11,32 @@
   },
   "dependencies": {
     "@internationalized/date": "^3.5.5",
-    "@nuxt/icon": "^1.1.1",
+    "@nuxt/icon": "^1.4.0",
     "@radix-icons/vue": "^1.0.0",
+    "@tanstack/vue-table": "^8.20.5",
     "@unovis/ts": "^1.4.3",
     "@unovis/vue": "^1.4.3",
     "@vee-validate/zod": "^4.13.2",
     "@vueuse/core": "^10.11.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "nuxt": "^3.12.3",
-    "nuxt-auth-sanctum": "^0.4.2",
-    "radix-vue": "^1.9.1",
+    "md5": "^2.3.0",
+    "nuxt": "^3.12.4",
+    "nuxt-auth-sanctum": "^0.4.4",
+    "radix-vue": "^1.9.2",
     "shadcn-nuxt": "^0.10.4",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "vee-validate": "^4.13.2",
-    "vue": "latest",
+    "vue": "^3.4.34",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@iconify-json/radix-icons": "^1.1.14",
+    "@iconify-json/lucide": "^1.1.208",
     "@nuxtjs/color-mode": "^3.4.2",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   }
 }

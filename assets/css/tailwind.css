@@ -4,22 +4,22 @@
 
 @layer base {
   :root {
-    --background: 108 19% 95%;
-    --foreground: 207, 43%, 9%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
 
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
 
-    --popover: 108 19% 95%;
-    --popover-foreground: 207, 43%, 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
 
-    --card: 108 19% 95%;
-    --card-foreground: 207, 43%, 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
 
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
 
-    --primary: 207, 43%, 9%;
+    --primary: 0 0% 9%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 0 0% 96.1%;
@@ -31,7 +31,7 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --ring: 207, 43%, 9%;
+    --ring: 0 0% 3.9%;
 
     --radius: 0.5rem;
 
@@ -43,7 +43,7 @@
     --vis-tooltip-padding: none !important;
 
     --vis-primary-color: var(--primary);
-    /* change to any hsl value you want */
+
     --vis-secondary-color: 160 81% 40%;
     --vis-text-color: var(--muted-foreground);
   }
