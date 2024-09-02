@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   },
 
   sanctum: {
-    baseUrl: process.env.API_BASE_URL || "http://localhost:8000",
+    baseUrl: "/backend",
     redirect: {
       onAuthOnly: "/auth/login",
       onGuestOnly: "/dashboard",
@@ -33,6 +33,14 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBaseUrl: process.env.API_BASE_URL || "http://localhost:8000",
+    }
+  },
+
+  nitro: {
+    routeRules:{
+      "/backend/**":{
+        proxy: (process.env.API_BASE_URL || "http://localhost:8000") + "/**"
+      }
     }
   }
 });
