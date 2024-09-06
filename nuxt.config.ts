@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   },
 
   sanctum: {
-    baseUrl: "/backend",
+    baseUrl: "/api",
     endpoints: {
       user: "/user",
     },
@@ -39,11 +39,15 @@ export default defineNuxtConfig({
     },
   },
 
-  nitro: {
-    routeRules: {
-      "/backend/**": {
-        proxy: (process.env.API_BASE_URL || "http://localhost:8000") + "/**",
+  routeRules: {
+    "/api/**": {
+      proxy: {
+        to: (process.env.API_BASE_URL || "http://localhost:8000") + "/**",
+        headers: {
+          Accept: "application/json",
+        },
       },
     },
+    "/":{redirect:"/dashboard"}
   },
 });
