@@ -187,9 +187,9 @@
         <!-- Results -->
         <div v-if="calculated" class="mt-6 results-container">
           <p class="text-lg font-semibold">Future Value: {{ formatCurrency(futureValue) }}</p>
-          <!-- <p class="text-lg font-semibold">Total Interest Earned: {{ formatCurrency(totalInterest) }}</p>
-          <p class="text-lg font-semibold">Total Deposit Value: {{ formatCurrency(totaldeposit) }}</p>
-          <p class="text-lg font-semibold">Total Withdrawal Value: {{ formatCurrency(totalWithdrawal) }}</p> -->
+          <p class="text-lg font-semibold">Total Interest Earned: {{ formatCurrency(totalInterest) }}</p>
+          <p class="text-lg font-semibold">Additional Deposits: {{ formatCurrency(additionalDeposit) }}</p>
+          <p class="text-lg font-semibold">Total Withdrawal Value: {{ formatCurrency(totalWithdrawal) }}</p>
         </div>
       </form>
     </CalculatorCardWrapper>
@@ -239,7 +239,7 @@
   const futureValue = ref(0);
   const totalInterest = ref(0);
   const totalWithdrawal = ref(0);
-  const totaldeposit = ref(0);
+  const additionalDeposit = ref(0);
   
   const validateForm = () => {
     if (
@@ -283,7 +283,7 @@
       
       const depositFutureValue = depositAmount * ((Math.pow(1 + depositRate, depositPeriods) - 1) / depositRate);
       totalPrincipal += depositFutureValue;
-      totaldeposit.value = depositFutureValue;
+      additionalDeposit.value = depositPeriods * depositAmount;;
     }
   
     if (form.value.contributionType === 'withdrawal' || form.value.contributionType === 'both') {
@@ -294,10 +294,10 @@
       
       const withdrawalFutureValue = withdrawalAmount * ((Math.pow(1 + withdrawalRate, withdrawalPeriods) - 1) / withdrawalRate);
       totalPrincipal -= withdrawalFutureValue;
-      totalWithdrawal.value = withdrawalFutureValue;
+      totalWithdrawal.value = withdrawalPeriods * withdrawalAmount;;
     }
   
-    totalInterest.value = totalPrincipal - principal;
+    totalInterest.value = totalPrincipal - principal - (additionalDeposit.value - totalWithdrawal.value);
     futureValue.value = totalPrincipal;
     calculated.value = true;
     isLoading.value = false;
