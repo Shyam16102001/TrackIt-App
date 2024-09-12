@@ -2,27 +2,27 @@
     <CalculatorCardWrapper title="Interest Calculator" label="Calculate Compound or Simple Interest">
       <form @submit="onSubmit">
         <!-- Principal Amount -->
-        <FormField name="principal" class="form-group">
+        <FormField name="principal" class="mb-6">
           <FormItem>
             <FormLabel>Principal Amount</FormLabel>
             <FormControl>
-              <Input type="number" v-model="form.principal" placeholder="Enter Principal Amount" class="input-field" />
+              <Input type="number" v-model="form.principal" placeholder="Enter Principal Amount" class="w-full py-2 px-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
             </FormControl>
           </FormItem>
         </FormField>
   
         <!-- Rate of Interest -->
-        <FormField name="rate" class="form-group">
+        <FormField name="rate" class="mb-6">
           <FormItem>
             <FormLabel>Rate of Interest (%)</FormLabel>
             <FormControl>
-              <Input type="number" step="0.01" v-model="form.rate" placeholder="Enter Rate" class="input-field" />
+              <Input type="number" step="0.01" v-model="form.rate" placeholder="Enter Rate" class="w-full py-2 px-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
             </FormControl>
           </FormItem>
         </FormField>
   
         <!-- Rate Type -->
-        <FormField name="rateType" class="form-group">
+        <FormField name="rateType" class="mb-6">
           <FormItem>
             <FormLabel>Rate Type</FormLabel>
             <FormControl>
@@ -43,7 +43,7 @@
         </FormField>
   
         <!-- Compound Frequency -->
-        <FormField name="frequency" class="form-group">
+        <FormField name="frequency" class="mb-6">
           <FormItem>
             <FormLabel>Compound Frequency</FormLabel>
             <FormControl>
@@ -68,31 +68,31 @@
   
         <!-- Time Period (Years and Months) -->
         <div class="flex space-x-4">
-          <FormField name="years" class="form-group form-group-half">
+          <FormField name="years" class="mb-6 flex-1">
             <FormItem>
               <FormLabel>Years</FormLabel>
               <FormControl>
-                <Input type="number" v-model="form.years" placeholder="Years" class="input-field" />
+                <Input type="number" v-model="form.years" placeholder="Years" class="w-full py-2 px-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
               </FormControl>
             </FormItem>
           </FormField>
-          <FormField name="months" class="form-group form-group-half">
+          <FormField name="months" class="mb-6 flex-1">
             <FormItem>
               <FormLabel>Months</FormLabel>
               <FormControl>
-                <Input type="number" v-model="form.months" placeholder="Months" class="input-field" />
+                <Input type="number" v-model="form.months" placeholder="Months" class="w-full py-2 px-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
               </FormControl>
             </FormItem>
           </FormField>
         </div>
   
         <!-- Additional Contributions -->
-        <FormField name="contributionType" class="form-group">
+        <FormField name="contributionType" class="mb-6">
           <FormItem>
             <FormLabel>Additional Contributions (Optional)</FormLabel>
             <FormControl>
               <RadioGroup v-model="form.contributionType">
-                <div class="flex items-center space-x-4">
+                <div class="flex space-x-4">
                   <RadioGroupItem value="none" /> <Label>None</Label>
                   <RadioGroupItem value="deposit" /> <Label>Deposits</Label>
                   <RadioGroupItem value="withdrawal" /> <Label>Withdrawals</Label>
@@ -107,16 +107,16 @@
         <div v-if="form.contributionType !== 'none'">
           <!-- Deposit Fields -->
           <div v-if="form.contributionType === 'deposit' || form.contributionType === 'both'">
-            <FormField name="depositAmount" class="form-group">
+            <FormField name="depositAmount" class="mb-6">
               <FormItem>
                 <FormLabel>Deposit Amount</FormLabel>
                 <FormControl>
-                  <Input type="number" v-model="form.depositAmount" placeholder="Deposit Amount" class="input-field" />
+                  <Input type="number" v-model="form.depositAmount" placeholder="Deposit Amount" class="w-full py-2 px-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
                 </FormControl>
               </FormItem>
             </FormField>
   
-            <FormField name="depositFrequency" class="form-group">
+            <FormField name="depositFrequency" class="mb-6">
               <FormItem>
                 <FormLabel>Deposit Frequency</FormLabel>
                 <FormControl>
@@ -142,16 +142,16 @@
   
           <!-- Withdrawal Fields -->
           <div v-if="form.contributionType === 'withdrawal' || form.contributionType === 'both'">
-            <FormField name="withdrawalAmount" class="form-group">
+            <FormField name="withdrawalAmount" class="mb-6">
               <FormItem>
                 <FormLabel>Withdrawal Amount</FormLabel>
                 <FormControl>
-                  <Input type="number" v-model="form.withdrawalAmount" placeholder="Withdrawal Amount" class="input-field" />
+                  <Input type="number" v-model="form.withdrawalAmount" placeholder="Withdrawal Amount" class="w-full py-2 px-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none" />
                 </FormControl>
               </FormItem>
             </FormField>
   
-            <FormField name="withdrawalFrequency" class="form-group">
+            <FormField name="withdrawalFrequency" class="mb-6">
               <FormItem>
                 <FormLabel>Withdrawal Frequency</FormLabel>
                 <FormControl>
@@ -178,14 +178,14 @@
   
         <!-- Submit Button -->
         <div class="mt-6 flex justify-center">
-          <Button type="submit" :disabled="isLoading" class="submit-button">
+          <Button type="submit" :disabled="isLoading" class="disabled:bg-gray-300 disabled:cursor-not-allowed">
             <span v-if="!isLoading">Calculate</span>
             <span v-else>Loading...</span>
           </Button>
         </div>
   
         <!-- Results -->
-        <div v-if="calculated" class="mt-6 results-container">
+        <div v-if="calculated" class="mt-6 p-5 border border-gray-200 rounded-lg bg-gray-100 dark:bg-black">
           <p class="text-lg font-semibold">Future Value: {{ formatCurrency(futureValue) }}</p>
           <p class="text-lg font-semibold">Total Interest Earned: {{ formatCurrency(totalInterest) }}</p>
           <p class="text-lg font-semibold">Additional Deposits: {{ formatCurrency(additionalDeposit) }}</p>
@@ -195,10 +195,6 @@
     </CalculatorCardWrapper>
   </template>
   
-  
-
-
-
   <script setup>
   import { ref } from 'vue';
   import {
@@ -243,7 +239,6 @@
   
   const validateForm = () => {
     if (
-      !form.value.principal ||
       !form.value.rate ||
       !form.value.rateType ||
       !form.value.frequency
@@ -261,6 +256,8 @@
   
     isLoading.value = true;
     calculated.value = false;
+    additionalDeposit.value = 0
+    totalWithdrawal.value = 0
   
     const principal = parseFloat(form.value.principal);
     const rate = parseFloat(form.value.rate) / 100;
@@ -304,73 +301,3 @@
   };
   </script>
   
-  
-
-
-
-  <style scoped>
-  .form-group {
-    margin-bottom: 24px;
-  }
-  
-  .form-group-half {
-    flex: 1;
-  }
-  
-  .form-item label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-  }
-  
-  .input-field,
-  .select-field {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #d1d5db; /* Light grey border */
-    border-radius: 8px; /* Slightly rounded corners */
-    box-sizing: border-box;
-    font-size: 14px;
-    transition: border-color 0.3s;
-  }
-  
-  .input-field:focus,
-  .select-field:focus {
-    border-color: #007bff; /* Blue border on focus */
-    outline: none;
-  }
-  
-  .radio-group {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .radio-label {
-    display: flex;
-    align-items: center;
-  }
-  
-  .mt-6 {
-    margin-top: 24px; /* Adjust gap as needed */
-  }
-  
-  
-  .submit-button:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
-  }
-  
-  .results-container {
-    margin-top: 24px; /* Adjust gap as needed */
-    padding: 20px;
-    border: 1px solid #e5e5e5; /* Light grey border */
-    border-radius: 8px; /* Slightly rounded corners */
-    background-color: #f9f9f9; /* Light background color */
-  }
-  </style>
-  
-  
-
-
-
-
