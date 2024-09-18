@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto p-4">
+    <div class="mx-auto p-4">
       <h1 class="text-2xl font-bold mb-6">Calculators</h1>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <CalculatorCard
@@ -15,8 +15,6 @@
   </template>
   
   <script setup>
-import { link } from '@unovis/ts/components/sankey/style';
-
   
   const calculators = [
     { title: 'SIP', description: 'Calculate how much you need to save or how much you will accumulate with your SIP', image: '/images/sip.gif', link: '/calculator/sip' },
@@ -29,10 +27,4 @@ import { link } from '@unovis/ts/components/sankey/style';
     { title: 'FD', description: 'Check returns on your fixed deposits (FDs) without any hassle', image: '/images/fd.gif', link: '/calculator/sip' },
   ]
   </script>
-  
-  <style scoped>
-  .container {
-    padding: 2rem;
-  }
-  </style>
   

@@ -1,6 +1,6 @@
 <template>
-  <router-link :to="link" class="w-full max-w-xs transition-transform transform hover:scale-105">
-    <Card>
+  <NuxtLink :to="link" class="w-full max-w-xs transition-transform transform hover:scale-105"> 
+    <Card class="h-full">
       <CardHeader>
         <CardTitle>{{ title }}</CardTitle>
         <CardDescription>{{ description }}</CardDescription>
@@ -9,17 +9,10 @@
         <img :src="image" alt="Image" class="w-24 h-24 mx-auto mt-2" />
       </CardContent>
     </Card>
-  </router-link>
+  </NuxtLink>
 </template>
 
 <script setup>
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle
-} from '@/components/ui/card'
 
 const props = defineProps({
   title: String,

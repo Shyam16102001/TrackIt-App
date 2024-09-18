@@ -96,17 +96,6 @@
   </template>
   
   <script setup>
-  import { ref, computed } from 'vue'
-  import { Slider } from '@/components/ui/slider'
-  import { Input } from '@/components/ui/input'
-  import { BarChart } from '@/components/ui/chart-bar'
-  import {
-    Tabs,
-    TabsContent,
-    TabsList,
-    TabsTrigger,
-  } from '@/components/ui/tabs'
-  
   // Variables for sliders (SIP)
   const monthlyInvestment = ref([5000])
 const returnRate = ref([12])
