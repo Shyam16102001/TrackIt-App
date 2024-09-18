@@ -42,7 +42,7 @@
           <!-- Right Section - Results and Chart for SIP -->
           <div class="w-2/3 p-4">
             <h3 class="text-xl font-semibold mb-4">Results</h3>
-            <p>Future Investment Value: ₹{{ futureValueSip.toFixed(2) }}</p>
+            <p>Future Investment Value: ₹{{ formatCurrency(futureValueSip.toFixed(2)) }}</p>
             <!-- Display more results if needed -->
             <BarChart :data="chartDataSip" index="name" :categories="['invested', 'predicted']" :y-formatter="(tick) => ` ${new Intl.NumberFormat('en-IN').format(tick)}`" />
           </div>
@@ -86,7 +86,7 @@
           <!-- Right Section - Results and Chart for Lumpsum -->
           <div class="w-2/3 p-4">
             <h3 class="text-xl font-semibold mb-4">Results</h3>
-            <p>Future Investment Value: ₹{{ futureValueLumpsum.toFixed(2) }}</p>
+            <p>Future Investment Value: ₹{{ formatCurrency(futureValueLumpsum.toFixed(2)) }}</p>
             <!-- Display more results if needed -->
             <BarChart :data="chartDataLumpsum" index="name" :categories="['invested', 'predicted']" :y-formatter="(tick) => ` ${new Intl.NumberFormat('en-IN').format(tick)}`" />
           </div>
@@ -116,6 +116,13 @@ const timePeriod = ref([10])
   const lumpsumAmount = ref([100000])
   const lumpsumReturnRate = ref([8])
   const lumpsumTimePeriod = ref([5])
+
+  const formatCurrency = (value, currency = 'INR') => {
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: currency
+    }).format(value);
+  };
   
   // Compound Interest Formula for SIP
   const calculateFutureValueSip = (pmt, rate, time) => {
@@ -145,7 +152,7 @@ const timePeriod = ref([10])
     return Array.from({ length: years }, (_, i) => ({
       name: `Year ${i + 1}`,
       invested: monthlyInvestment.value * 12 * (i + 1), // Increase total proportionally by year
-      predicted: calculateFutureValueSip(monthlyInvestment.value, returnRate.value, (i + 1)), // Proportional predicted value
+      predicted: calculateFutureValueSip(monthlyInvestment.value, returnRate.value, (i + 1)).toFixed(2), // Proportional predicted value
     }))
   })
   
@@ -157,8 +164,8 @@ const timePeriod = ref([10])
   
     return Array.from({ length: years }, (_, i) => ({
       name: `Year ${i + 1}`,
-      invested: lumpsumAmount[0], // Lumpsum amount remains the same
-      predicted: calculateFutureValueLumpsum(lumpsumAmount.value, lumpsumReturnRate.value, (i + 1)), // Proportional predicted value
+      invested: lumpsumAmount.value * 1, // Lumpsum amount remains the same
+      predicted: calculateFutureValueLumpsum(lumpsumAmount.value, lumpsumReturnRate.value, (i + 1)).toFixed(2), // Proportional predicted value
     }))
   })
   </script>
