@@ -8,7 +8,7 @@
       <TabsContent value="sip">
         <div class="flex">
           <!-- Left Section - Sliders for SIP -->
-          <div class="w-1/3 p-4 bg-gray-100">
+          <div class="w-1/3 p-4 bg-gray-100 dark:bg-black">
             <h3 class="text-xl font-semibold mb-4">SIP Calculator</h3>
             
             <!-- Monthly Investment Slider -->
@@ -52,7 +52,7 @@
       <TabsContent value="lumpsum">
         <div class="flex">
           <!-- Left Section - Sliders for Lumpsum -->
-          <div class="w-1/3 p-4 bg-gray-100">
+          <div class="w-1/3 p-4 bg-gray-100 dark:bg-black">
             <h3 class="text-xl font-semibold mb-4">Lumpsum Calculator</h3>
             
             <!-- Lumpsum Amount Slider -->
