@@ -3,5 +3,3 @@
         <calculatorInterestCalculator></calculatorInterestCalculator>
     </div>
 </template>
-
-  
