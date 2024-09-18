@@ -195,20 +195,7 @@
     </CalculatorCardWrapper>
   </template>
   
-  <script setup>
-  import { ref } from 'vue';
-  import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue
-  } from '@/components/ui/select';
-  import { Label } from '@/components/ui/label';
-  import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-  
+  <script setup>  
   const formatCurrency = (value, currency = 'INR') => {
     return new Intl.NumberFormat('en-IN', {
       style: 'currency',
