@@ -24,13 +24,13 @@
               <Icon name="lucide:calendar" class="mr-2 h-4 w-4" />
               {{
                 dateRange.start
-                  ? formatDate(dateRange.start.toDate(getLocalTimeZone()))
+                  ? formatDate(dateRange.start.toDate())
                   : "Start date"
               }}
               -
               {{
                 dateRange.end
-                  ? formatDate(dateRange.end.toDate(getLocalTimeZone()))
+                  ? formatDate(dateRange.end.toDate())
                   : "End date"
               }}
             </Button>

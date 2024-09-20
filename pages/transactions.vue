@@ -9,6 +9,14 @@
 </template>
 
 <script setup>
+
+definePageMeta({
+  middleware: ["sanctum-verified"],
+});
+
+useSeoMeta({
+  title: "Transaction History | TrackIt",
+});
 const { fetchTransaction } = useTransactions();
 const transactions = ref([]);
 const isLoading = ref(true);
