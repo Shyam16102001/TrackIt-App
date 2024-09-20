@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   },
 
   sanctum: {
-    baseUrl: "/api",
+    baseUrl: "/api/v1",
     endpoints: {
       user: "/user",
     },
@@ -40,7 +40,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    "/api/**": {
+    "/api/v1/**": {
       proxy: {
         to: (process.env.API_BASE_URL || "http://localhost:8000") + "/**",
         headers: {
@@ -48,6 +48,6 @@ export default defineNuxtConfig({
         },
       },
     },
-    "/":{redirect:"/dashboard"}
+    "/": { redirect: "/dashboard" },
   },
 });
