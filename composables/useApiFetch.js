@@ -1,16 +1,12 @@
-export const useApiFetch = (url, options = {}) => {
-  const baseUrl = useRuntimeConfig().public.apiBaseUrl;
-  
+export const useApiFetch = (url, options = {}) => {  
   const csrfToken = useCookie("XSRF-TOKEN").value;
-
-  const fetchUrl = `${baseUrl}${url}`;
 
   options.headers = {
     ...options.headers,
     "X-XSRF-TOKEN": csrfToken,
   };
 
-  return $fetch(fetchUrl, {
+  return $fetch(url, {
     ...options,
     credentials: "include",
   });
