@@ -26,5 +26,12 @@
     { title: 'EPF', description: 'Calculate returns for your Employee’s Provident Fund (EPF)', image: '/images/epf.gif', link: '/calculator/sip' },
     { title: 'FD', description: 'Check returns on your fixed deposits (FDs) without any hassle', image: '/images/fd.gif', link: '/calculator/sip' },
   ]
-  </script>
+
+  definePageMeta({
+    middleware: ["sanctum-verified"],
+  });
   
+  useSeoMeta({
+    title: "Calculator | TrackIt",
+  });
+  </script>
