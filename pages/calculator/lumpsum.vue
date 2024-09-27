@@ -119,6 +119,14 @@
 </template>
 
 <script setup>
+
+definePageMeta({
+    middleware: ["sanctum-verified"],
+  });
+  
+  useSeoMeta({
+    title: "Lumpsum | TrackIt",
+  });
 // Variables for sliders (LumpSum)
 const lumpsumAmount = ref([100000])
 const lumpsumReturnRate = ref([8])

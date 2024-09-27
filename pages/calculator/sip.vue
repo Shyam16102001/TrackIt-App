@@ -125,6 +125,14 @@
 
 
 <script setup>
+
+definePageMeta({
+    middleware: ["sanctum-verified"],
+  });
+  
+  useSeoMeta({
+    title: "SIP | TrackIt",
+  });
 // Variables for sliders (SIP)
 const monthlyInvestment = ref([5000])
 const returnRate = ref([12])
