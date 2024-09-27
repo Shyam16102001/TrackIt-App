@@ -1,15 +1,15 @@
 <template>
-    <div>
-        <calculatorInterestCalculator></calculatorInterestCalculator>
-    </div>
+  <div>
+    <CalculatorInterestCalculator />
+  </div>
 </template>
 
 <script setup>
 definePageMeta({
-    middleware: ["sanctum-verified"],
-  });
-  
-  useSeoMeta({
-    title: "CI | TrackIt",
-  });
+  middleware: ["sanctum-verified"],
+});
+
+useSeoMeta({
+  title: "CI | TrackIt",
+});
 </script>

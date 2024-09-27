@@ -29,9 +29,7 @@
               }}
               -
               {{
-                dateRange.end
-                  ? formatDate(dateRange.end.toDate())
-                  : "End date"
+                dateRange.end ? formatDate(dateRange.end.toDate()) : "End date"
               }}
             </Button>
           </PopoverTrigger>
@@ -104,7 +102,7 @@
             <TableRow v-for="item in paginatedData" :key="item.id">
               <TableCell class="font-medium">{{ item.name }}</TableCell>
               <TableCell :class="typeToColorClass(item.type)">
-                {{ formatAmount(item.amount) }}
+                {{ formatCurrency(item.amount) }}
               </TableCell>
               <TableCell>{{ formatDate(item.date) }}</TableCell>
               <TableCell class="text-right">
@@ -117,11 +115,11 @@
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
                     <DropdownMenuItem @click="editItem(item)">
-                      <Icon name="lucide:pencil" class="h-4 w-4 mr-2" />
+                      <Icon name="lucide:pencil" class="mr-2 h-4 w-4" />
                       <span>Edit</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem @click="deleteItem(item)">
-                      <Icon name="lucide:trash-2" class="h-4 w-4 mr-2" />
+                      <Icon name="lucide:trash-2" class="mr-2 h-4 w-4" />
                       <span>Delete</span>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
@@ -238,13 +236,6 @@ const pageSize = ref(10);
 onMounted(async () => {
   data.value = props.transactions;
 });
-
-const formatAmount = (amount) => {
-  return new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-  }).format(amount);
-};
 
 const formatDate = (date) => {
   if (typeof date === "string") {

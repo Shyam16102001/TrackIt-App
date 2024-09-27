@@ -24,7 +24,7 @@
       Portfolio
     </NuxtLink>
     <NuxtLink
-     to="/calculator"
+      to="/calculator"
       class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       activeClass="text-primary"
     >

@@ -9,7 +9,6 @@
 </template>
 
 <script setup>
-
 definePageMeta({
   middleware: ["sanctum-verified"],
 });
