@@ -23,10 +23,10 @@
                 v-model="lumpsumAmount"
                 :default-value="100000"
                 :min="10000"
-                :max="1000000"
+                :max="10000000"
                 :step="1000"
               />
-              <Input v-model="lumpsumAmount" class="ml-2 w-20" />
+              <Input v-model="lumpsumAmount[0]" class="ml-2 w-20" @input="updateLumpsumAmount" />
             </div>
           </div>
 
@@ -43,7 +43,7 @@
                 :max="20"
                 :step="0.5"
               />
-              <Input v-model="lumpsumReturnRate" class="ml-2 w-20" />
+              <Input v-model="lumpsumReturnRate[0]" class="ml-2 w-20" @input="updateLumpsumReturnRate"/>
             </div>
           </div>
 
@@ -60,7 +60,7 @@
                 :max="30"
                 :step="1"
               />
-              <Input v-model="lumpsumTimePeriod" class="ml-2 w-20" />
+              <Input v-model="lumpsumTimePeriod[0]" class="ml-2 w-20" @input="updateLumpsumTimePeriod" />
             </div>
           </div>
         </div>
@@ -82,7 +82,13 @@
               <div class="mb-4 w-full md:mb-0">
                 <p>
                   Initial balance:
-                  {{ formatCurrency(lumpsumAmount[0].toFixed(2)) }}
+                  {{ formatCurrency(lumpsumAmount[0]) }}
+                </p>
+              </div>
+              <div class="mb-4 w-full md:mb-0">
+                <p>
+                  Time to Double Investment:
+                  {{ timeToDoubleInvestment }} years
                 </p>
               </div>
               <div class="w-full">
@@ -128,7 +134,6 @@
               :y-formatter="
                 (tick) => ` ${formatCurrency(tick)}`
               "
-              type="stacked"
             />
           </div>
           <div v-else-if="viewMode === 'table'">
@@ -194,6 +199,21 @@ const lumpsumTimePeriod = ref([5]);
 const viewMode = ref("table");
 const router = useRouter();
 
+const updateLumpsumAmount = (event) => {
+  // Coerce input value to number
+  lumpsumAmount[0] = Number(event.target.value);
+};
+
+const updateLumpsumReturnRate = (event) => {
+  // Coerce input value to number
+  lumpsumReturnRate[0] = Number(event.target.value);
+};
+
+const updateLumpsumTimePeriod = (event) => {
+  // Coerce input value to number
+  lumpsumTimePeriod[0] = Number(event.target.value);
+};
+
 // Future value calculation for lumpsum
 const calculateFutureValueLumpsum = (principal, rate, time) => {
   const i = rate / 100;
@@ -223,7 +243,7 @@ const chartDataLumpsum = computed(() => {
         lumpsumAmount.value,
         lumpsumReturnRate.value,
         i + 1,
-      ).toFixed(2),
+      ).toFixed(0),
     ), // Proportional predicted value
   }));
 });
@@ -236,6 +256,6 @@ const allTimeRorLS = computed(() => {
   ).toFixed(2);
 });
 
-// // Calculate time needed to double the investment using rule of 72
-// const timeToDoubleInvestmentSip = computed(() => (72 / returnRate.value).toFixed(1))
+// Calculate time needed to double the investment using rule of 72
+const timeToDoubleInvestment = computed(() => (72 / lumpsumReturnRate.value).toFixed(1))
 </script>
