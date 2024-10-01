@@ -226,7 +226,7 @@ const props = defineProps({
 });
 
 const data = ref([]);
-const sortOrder = ref("asc");
+const sortOrder = ref("desc");
 const sortField = ref("date");
 const selectedType = ref("all");
 const dateRange = ref({});

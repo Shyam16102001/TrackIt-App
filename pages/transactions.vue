@@ -16,6 +16,9 @@ definePageMeta({
 useSeoMeta({
   title: "Transaction History | TrackIt",
 });
+import { useToast } from "@/components/ui/toast/use-toast";
+const { toast } = useToast();
+
 const { fetchTransaction } = useTransactions();
 const transactions = ref([]);
 const isLoading = ref(true);

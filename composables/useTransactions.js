@@ -5,7 +5,7 @@ export default () => {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await useApiFetch("/api/v1/transactions");
-         resolve(response);
+        resolve(response);
       } catch (error) {
         reject(error);
       }
@@ -33,8 +33,20 @@ export default () => {
     });
   };
 
+  const fetchTransactionStats = () => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await useApiFetch("/api/v1/transactions/stats");
+        resolve(response);
+      } catch (error) {
+        reject(error);
+      }
+    });
+  };
+
   return {
     fetchTransaction,
     addTransaction,
+    fetchTransactionStats,
   };
 };

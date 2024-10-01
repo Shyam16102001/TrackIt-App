@@ -1,54 +1,10 @@
 <script setup>
-const data = [
-  {
-    name: "Jan",
-    total: Math.floor(Math.random() * 2000) + 500,
-    income: Math.floor(Math.random() * 2000) + 500,
-    expense: Math.floor(Math.random() * 2000) + 500,
+const props = defineProps({
+  transactions: {
+    type: Array,
+    required: true,
   },
-  {
-    name: "Feb",
-    total: Math.floor(Math.random() * 2000) + 500,
-    income: Math.floor(Math.random() * 2000) + 500,
-    expense: Math.floor(Math.random() * 2000) + 500,
-  },
-  {
-    name: "Mar",
-    total: Math.floor(Math.random() * 2000) + 500,
-    income: Math.floor(Math.random() * 2000) + 500,
-    expense: Math.floor(Math.random() * 2000) + 500,
-  },
-  {
-    name: "Apr",
-    total: Math.floor(Math.random() * 2000) + 500,
-    income: Math.floor(Math.random() * 2000) + 500,
-    expense: Math.floor(Math.random() * 2000) + 500,
-  },
-  {
-    name: "May",
-    total: Math.floor(Math.random() * 2000) + 500,
-    income: Math.floor(Math.random() * 2000) + 500,
-    expense: Math.floor(Math.random() * 2000) + 500,
-  },
-  {
-    name: "Jun",
-    total: Math.floor(Math.random() * 2000) + 500,
-    income: Math.floor(Math.random() * 2000) + 500,
-    expense: Math.floor(Math.random() * 2000) + 500,
-  },
-  {
-    name: "Jul",
-    total: Math.floor(Math.random() * 2000) + 500,
-    income: Math.floor(Math.random() * 2000) + 500,
-    expense: Math.floor(Math.random() * 2000) + 500,
-  },
-  {
-    name: "Sep",
-    total: Math.floor(Math.random() * 2000) + 500,
-    income: Math.floor(Math.random() * 2000) + 500,
-    expense: Math.floor(Math.random() * 2000) + 500,
-  },
-];
+});
 </script>
 
 <template>
@@ -58,8 +14,8 @@ const data = [
     </CardHeader>
     <CardContent class="pl-2">
       <AreaChart
-        :data="data"
-        :categories="['total', 'income', 'expense']"
+        :data="transactions"
+        :categories="['income', 'expense', 'investment', 'savings']"
         :index="'name'"
         show-gradiant
       />
