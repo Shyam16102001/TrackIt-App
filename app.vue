@@ -8,4 +8,8 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+useSeoMeta({
+  ogImage: "/og-image.png",
+});
+</script>
